@@ -1,0 +1,182 @@
+@charset "utf-8";
+
+@import "compass";
+@import "bootstrap-variables.scss";
+@import "values";
+@import "compass/reset";
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Raleway');
+
+div,ul,ol,li,table,th,td,a,p,nav,main,article,aside,footer,header,section,
+h1,h2,h3,h4,h5,h6,input,textarea {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+
+body,input,textarea {
+    font-family: 'Raleway', sans-serif;
+   color:#000;
+   line-height:1.5;
+   font-size:62.5%;
+   font-weight: 300;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+h1 {
+  font-weight: 900;
+}
+
+h2 {
+  font-weight: 700;
+}
+
+a {
+  @include transition-property(all);
+  @include transition-duration(0.2s);
+  @include transition-timing-function(ease-in);
+}
+
+
+img,video {
+	max-width:100%;
+	height:auto;
+	vertical-align:top;
+}
+
+#container {
+  overflow:hidden;
+}
+#logo {
+  width:20px;
+  path {
+    fill:#fff;
+     @include transition-property(fill);
+  @include transition-duration(0.2s);
+  @include transition-timing-function(ease-in);
+  }
+  &:hover {
+    cursor:pointer;
+    path {
+      fill:$gold1;
+    }
+  }
+}
+
+#gheader {
+  position: fixed;
+  z-index: 9999;
+  top:0;
+  left:0;
+  right:0;
+  width:100%;
+  background:rgba(35,31,32,0.7);
+  font-size:1.3em;
+  padding:5px 10px 5px 20px;
+  display:table;
+  a {
+    color:#fff;
+    text-decoration:none;
+    &:hover {
+      color:$gold1;
+    }
+  }
+  h1 {
+    display:table-cell;
+    vertical-align:middle;
+  }
+  nav {
+    display:table-cell;
+    vertical-align:middle;
+    text-align:right;
+    ul {
+      li {
+        @include inline-block;
+        vertical-align:middle;
+        margin:0 10px;
+      }
+    }
+  }
+}
+
+#gfooter {
+  
+  .copyright {
+    
+  }
+}
+
+#gfooter {
+  position:fixed;
+  z-index:9999;
+  bottom:0;
+  left:0;
+  right:0;
+  
+  background:rgba(35,31,32,0.7);
+  display:table;
+  text-align:center;
+  padding:5px 20px 5px 20px;
+  width:100%;
+  
+  
+  color:#fff;
+  
+  .copyright {
+    display:table-cell;
+    vertical-align:middle;
+  }
+}
+
+
+
+.main-container {
+  padding:40px 20px 0;
+}
+
+#main {
+  h1 {
+    color:$gold1;
+    text-align: center;
+    margin:1em 0;
+    @media (min-width:768px) {
+      font-size:5em;
+    }
+    @media (max-width:767px) {
+      font-size:2.5em;
+    }
+  }
+  h2 {
+    @media (min-width:768px) {
+      font-size:3.5em;
+    }
+    @media (max-width:767px) {
+      font-size:1.5em;
+    }
+  }
+}
+/*-----------------
+Print
+-----------------*/
+@media print {
+  body {
+    width: 100%;
+    height: 100%;
+  }
+
+  .container {
+    width: 100% !important;
+  }
+
+  #breadcrumbs,
+  #gnavi,
+  #sidemenu,
+  #backtotop,
+  #gfooter {
+    display: none !important;
+  }
+}
