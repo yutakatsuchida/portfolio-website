@@ -87,7 +87,6 @@ $.fn.onPageLoad = function() {
 }
 $page.onPageLoad();
 
-
 $(window).on('load resize', function(){
   var screenHeight = $(window).height();
   var mainscreen = '#mainscreen';
@@ -96,25 +95,22 @@ $(window).on('load resize', function(){
   defaultManPos();
 });
 
-
-
-  function defaultMoonPos(){
+function defaultMoonPos(){
     var moon = $('#moon');
     var moonWidth = moon.width();
     moon.css('marginLeft',-(moonWidth/2)+'px');
-  }
-  function defaultManPos(){
+}
+
+function defaultManPos(){
     var man = $('#man');
     var manWidth = man.width();
     man.css('marginLeft',-(manWidth/2)+'px');
-  }
-
+}
 
 function containerFadeIn() {
    tl = new TimelineLite();
    tl.set("#main", {opacity:1,scale:1})
    .to("#main", 1, {opacity:0,scale:2,ease: Power4.easeOut, transformOrigin:"center top"});
-
 }
 
 function containerFadeOut() {
