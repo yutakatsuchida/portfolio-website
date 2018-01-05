@@ -8,14 +8,15 @@ $(function(){
         onStart: {
           duration: 1500,
           render: function ($container) {
+
             $container.addClass('is-exiting');
             containerFadeIn();
          
             if ( $('.fp-enabled').length ) {
-                    setTimeout (function () {
+              setTimeout (function () {
                 $.fn.fullpage.destroy('all');
               }, 1000);
-                }
+            }
           }
         },
         onReady: {
@@ -25,12 +26,13 @@ $(function(){
             $container.removeClass('is-exiting');
             // Inject the new content
             $container.html($newContent);
+            loadImages();
             containerFadeOut();
             $container.onPageLoad();
 
           }
         },
-        onAfter : function($container) {
+        onAfter: function($container) {
           var screenHeight = $(window).height();
           var mainscreen = '#mainscreen';
           $(mainscreen).css('height', screenHeight+'px');
@@ -39,7 +41,6 @@ $(function(){
           $('#play').on('click',function(){
             mainAnimation();
           });
-
         }      
       },
       smoothState = $page.smoothState(options).data('smoothState');
@@ -51,19 +52,15 @@ $.fn.onPageLoad = function() {
       $('#play').on('click',function(){
         mainAnimation();
       })
-    }
-
-    else if ($('#about').length) {
-
-  $('#fullpage').fullpage({
-        'verticalCentered': true,
-        'css3': true,
-        'navigation': true,
-        'navigationPosition': 'right'
-  });
-  }
-  else if ($('#works').length) {
-  $('#fullpage2').fullpage({
+    } else if ($('#about').length) {
+      $('#fullpage').fullpage({
+          'verticalCentered': true,
+          'css3': true,
+          'navigation': true,
+          'navigationPosition': 'right'
+      });
+    } else if ($('#works').length) {
+      $('#fullpage2').fullpage({
               menu: '#menu',
               'navigation': true,
               'navigationPosition': 'right',
@@ -82,8 +79,8 @@ $.fn.onPageLoad = function() {
               onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){
                   //arrowFadeOut();
               }
-  });
-}
+      });
+    }
 }
 $page.onPageLoad();
 
@@ -94,6 +91,24 @@ $(window).on('load resize', function(){
   defaultMoonPos();
   defaultManPos();
 });
+
+function loadImages() {
+    var $img = $('img');
+    var imgNum = $('img').length;
+    var imgCount = 0;
+
+    for (var i = 0; i < imgNum; i += 1) {
+      var createImg = new Image();
+      $(createImg).error(function(){
+          imgCount += 1;
+          console.log('error');
+      }).load(function(){
+          imgCount += 1;
+          console.log('img loaded');
+      });
+      createImg.src = $img[i].src;
+    }
+}
 
 function defaultMoonPos(){
     var moon = $('#moon');
