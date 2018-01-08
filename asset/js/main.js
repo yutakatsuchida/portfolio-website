@@ -10,7 +10,7 @@ $(function(){
           render: function ($container) {
 
             $container.addClass('is-exiting');
-            containerFadeIn();
+            containerFadeOut();
          
             if ( $('.fp-enabled').length ) {
               setTimeout (function () {
@@ -22,12 +22,14 @@ $(function(){
         onReady: {
           duration: 0,
           render: function ($container, $newContent) {
+            
             // Remove your CSS animation reversing class
             $container.removeClass('is-exiting');
             // Inject the new content
+
             $container.html($newContent);
-            loadImages();
-            containerFadeOut();
+            
+            containerFadeIn();
             $container.onPageLoad();
 
           }
@@ -96,15 +98,15 @@ function loadImages() {
     var $img = $('img');
     var imgNum = $('img').length;
     var imgCount = 0;
-
+    console.log(imgNum);
     for (var i = 0; i < imgNum; i += 1) {
       var createImg = new Image();
       $(createImg).error(function(){
           imgCount += 1;
-          console.log('error');
+          //console.log('error');
       }).load(function(){
           imgCount += 1;
-          console.log('img loaded');
+          //console.log('img loaded');
       });
       createImg.src = $img[i].src;
     }
@@ -122,13 +124,16 @@ function defaultManPos(){
     man.css('marginLeft',-(manWidth/2)+'px');
 }
 
-function containerFadeIn() {
+function containerFadeOut() {
+  $page.append('<div id="loading"><img src="/asset/img/loading.gif"></div>');
    tl = new TimelineLite();
    tl.set("#main", {opacity:1,scale:1})
    .to("#main", 1, {opacity:0,scale:2,ease: Power4.easeOut, transformOrigin:"center top"});
+
 }
 
-function containerFadeOut() {
+function containerFadeIn() {
+  loadImages();
    tl = new TimelineLite();
    tl.set("#main", {opacity:0,scale:2, transformOrigin:"center top"})
    .to("#main", 2, {opacity:1,scale:1,ease: Power4.easeOut});
@@ -140,6 +145,7 @@ function arrowFadeOut() {
    .to(".fp-prev", 0.5, {left:"-200px",ease: Power1.easeOut},"arrowFadeOut")
    .to(".section.active .slide.active .text", 1, {opacity:0,right:"-200px",ease: Power4.easeOut},"arrowFadeIn")
   .to(".section.active .slide.active .img", 1, {opacity:0,left:"-200px",ease: Power4.easeOut},"arrowFadeIn");
+
 }
 
 function arrowFadeIn() {

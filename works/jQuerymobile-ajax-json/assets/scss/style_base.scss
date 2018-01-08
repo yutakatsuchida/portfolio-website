@@ -1,0 +1,107 @@
+@charset "utf-8";
+
+@import "compass";
+@import "bootstrap-variables.scss";
+@import "values";
+@import "compass/reset";
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+
+div,ul,ol,li,table,th,td,a,p,nav,main,article,aside,footer,header,section,
+h1,h2,h3,h4,h5,h6,input,textarea {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+   color:#000;
+   line-height:1.5;
+   font-weight: 300;
+}
+
+h1,
+.ui-header .ui-title, .ui-footer .ui-title {
+  font-weight: 700;
+  font-size:14px;
+}
+
+h2 {
+  font-size:14px;
+  font-weight: 400;
+}
+
+.ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a {
+  font-weight: 300;
+}
+
+.ui-content .ui-listview, .ui-panel-inner>.ui-listview {
+  margin:0;
+}
+
+strong {
+  font-weight: 700;
+}
+
+main {
+  input,
+  textarea,
+  .ui-btn {
+    font-size:12px;
+  }
+  .ui-field-contain {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  p {
+    font-size:11px;
+  }
+}
+
+
+
+a {
+  @include transition-property(all);
+  @include transition-duration(0.2s);
+  @include transition-timing-function(ease-in);
+}
+
+
+img,video {
+	max-width:100%;
+	height:auto;
+	vertical-align:top;
+}
+
+.shadow01 {
+  @include box-shadow(0px 14px 14px 0px rgba(0, 0, 0, 0.17));
+}
+.line-white {
+  border:1px solid #fff;
+}
+
+
+/*-----------------
+Print
+-----------------*/
+@media print {
+  body {
+    width: 100%;
+    height: 100%;
+  }
+
+  .container {
+    width: 100% !important;
+  }
+
+  #breadcrumbs,
+  #gnavi,
+  #sidemenu,
+  #backtotop,
+  #gfooter {
+    display: none !important;
+  }
+}

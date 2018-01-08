@@ -48,6 +48,13 @@ img,video {
 	vertical-align:top;
 }
 
+.shadow01 {
+  @include box-shadow(0px 14px 14px 0px rgba(0, 0, 0, 0.17));
+}
+.line-white {
+  border:1px solid #fff;
+}
+
 #container {
   overflow:hidden;
 }
